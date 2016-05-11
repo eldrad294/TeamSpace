@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Work Space</title>
+    @Styles.Render("~/JqueryUI/css")
+    @Styles.Render("~/WorkSpace/css")
+</head>
+<body onload='startRealtime()'>
+    <div class="container-fluid">
+        <!--Top Bar-->
+        <div class="row">
+            <div class="MenuBarBackground">
+                <div class="col-lg-4">
+                    @Html.Partial("Menu_Bar")
+                </div>
+                <div class="col-lg-6">
+                    <span id="sentMessage">Request Sent</span>
+                </div>
+                <div class="col-lg-2">
+                    <div class="CurrentUser">
+                        <h4><span class="glyphicon glyphicon-user"></span><span id="Collaboratorname"> Collaborator Name</span></h4>
+                        <b>Collaborators: </b>
+                        <span id="Collaborators"></span>
+                        <a><span id="addCollaborator" data-toggle="tooltip" title="Invite other people to work on this project" class="glyphicon glyphicon-plus"></span></a>
+                        @Html.Partial("Request_Collaborator_Modal")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Main Context + Side Bar-->
+        <div class="row">
+            <!--Main Context-->
+            <div class="col-lg-9">
+                @Html.Partial("_Main_Context")
+            </div>
+            <!--Side Bar-->
+            <div class="col-lg-3">
+                @Html.Partial("_Side_Bar")
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/myScripts")
+    @Scripts.Render("~/bundles/Realtime")
+    <!-- Load the Realtime libraries. -->
+    <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+    <!-- Load the utility library. -->
+    <script type="text/javascript" src="realtime-client-utils.js"></script>
+</body>
+</html>
